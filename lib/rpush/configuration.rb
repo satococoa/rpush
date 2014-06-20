@@ -25,7 +25,7 @@ module Rpush
 
   CONFIG_ATTRS = [:foreground, :push_poll, :feedback_poll, :embedded,
                   :check_for_errors, :pid_file, :batch_size, :push, :client, :logger,
-                  :batch_storage_updates, :log_dir]
+                  :batch_storage_updates, :log_dir, :apns_feedback_enabled]
 
   class ConfigurationWithoutDefaults < Struct.new(*CONFIG_ATTRS)
   end
@@ -84,6 +84,7 @@ module Rpush
       self.client = :active_record
       self.logger = nil
       self.log_dir = Rails.root
+      self.apns_feedback_enabled = true
 
       # Internal options.
       self.embedded = false
